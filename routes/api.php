@@ -17,6 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource("Movie", "apiCatalogController");
+Route::middleware("cors")->resource("Movie", "apiCatalogController");
 
 Route::resource("User", "apiUserController");
+
+//Route::get('breweries', ['middleware' => 'cors', function()
+//{
+//    return \Response::json(\App\Brewery::with('beers', 'geocode')->paginate(10), 200);
+//}]);
